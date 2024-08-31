@@ -65,7 +65,6 @@ import Layout from '../layouts/Layout.astro';
       const formData = new FormData(form);
       const object = Object.fromEntries(formData);
       const json = JSON.stringify(object);
-      result.innerHTML = "Please wait..."
     
         fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
@@ -86,7 +85,7 @@ import Layout from '../layouts/Layout.astro';
             })
             .catch(error => {
                 console.log(error);
-                result.innerHTML = "Something went wrong!";
+                result.innerHTML = "Error";
             })
             .then(function() {
                 form.reset();
