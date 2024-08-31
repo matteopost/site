@@ -1,0 +1,174 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en antialiased">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<title>{title}</title>
+	</head>
+	<body class="bg-nero">
+		<slot />
+	</body>
+</html>
+<style is:global>
+
+	*{
+		/* border: 1px solid red; */
+	}
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-50.woff2);
+		font-weight: 50;
+	}
+	
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-100.woff2);
+		font-weight: 100;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-150.woff2);
+		font-weight: 150;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-200.woff2);
+		font-weight: 200;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-250.woff2);
+		font-weight: 250;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-300.woff2);
+		font-weight: 300;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-350.woff2);
+		font-weight: 350;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-400.woff2);
+		font-weight: 400;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-450.woff2);
+		font-weight: 450;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-500.woff2);
+		font-weight: 500;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-550.woff2);
+		font-weight: 550;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-600.woff2);
+		font-weight: 600;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-650.woff2);
+		font-weight: 650;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-700.woff2);
+		font-weight: 700;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-750.woff2);
+		font-weight: 750;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-800.woff2);
+		font-weight: 800;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-850.woff2);
+		font-weight: 850;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-900.woff2);
+		font-weight: 900;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-950.woff2);
+		font-weight: 950;
+	}
+
+
+	@font-face {
+		font-family: 'Aspekta';
+		src: url(/font/Aspekta-1000.woff2);
+		font-weight: 1000;
+	}
+
+
+
+</style>
+<script is:inline>
+	AOS.init();
+</script>

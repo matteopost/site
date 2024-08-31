@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="ENERGYOO">
+    <div class="bg-gradient-to-b from-verdechiaro to-verdemedio w-full h-screen flex flex-col justify-center items-center" data-aos="fade" data-aos-duration="1000" data-aos-easing="ease-in">
+        <img src="/logo.svg" alt="logo" class="w-3/4 md:w-full max-w-4xl p-2 sticky top-2" id="logo" data-aos="fade-in" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-out">
+        <!-- <h1 class="uppercase text-verdebianco text-3xl font-light tracking-widest sticky top-4" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1000" data-aos-easing="ease-out">Infinite Batteries</h1> -->
+		<!-- <button class="absolute left-1/2 -translate-x-1/2 bottom-6 p-3 md:p-4 w-36 rounded-2xl bg-verdebianco opacity-80 hover:opacity-100 transition-all font-semibold text-verdescuro">Contact</button> -->
+    </div>
+
+    
+        <!-- <div class="grid grid-cols-4 p-4 gap-8 text-xl font-medium text-verdebianco font-sans">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et ex maximus, volutpat sapien id, placerat diam. Etiam sit amet felis dolor. Sed tristique bibendum justo, id facilisis enim sodales in. Nulla porttitor sapien quis eros iaculis, ut auctor nibh hendrerit. Morbi malesuada lectus sed ipsum malesuada, in posuere lacus porttitor. Vivamus lectus lacus, hendrerit semper urna a, facilisis malesuada tortor.</p>
+            <p>Phasellus maximus mollis odio, id consectetur justo pharetra vitae. In at sagittis ipsum, et efficitur ipsum. Pellentesque eu nunc vestibulum, fringilla quam sagittis, cursus turpis. Fusce sed augue pellentesque, vestibulum nunc sit amet, vestibulum ex. In eleifend, leo vitae tristique gravida, lacus lorem porttitor lectus, non malesuada ligula ex id lacus. Phasellus in felis dui. Nunc tincidunt hendrerit arcu, non malesuada magna tincidunt id. Nulla finibus quis eros quis molestie. </p>
+        </div> -->
+	<div class="flex items-center justify-center bg-verdemedio ">
+		<form method="POST" id="form" class="justify-start py-[10vh] max-w-2xl w-3/4 md:w-full flex flex-col gap-4 font-semibold text-verdescuro">
+
+			<!-- <input type="hidden" name="access_key" value="ee13c020-680e-4d8f-820e-04bac5116faf"> -->
+			<input type="hidden" name="access_key" value="43e381f3-798b-4576-9a11-a0968406f154">
+		
+			<input type="text" name="name" placeholder="Nome Cognome" required class="p-3 md:p-4 w-full rounded-2xl bg-verdebianco opacity-80 focus:opacity-100">
+			<input type="email" name="email" required placeholder="E-mail" class="p-3 md:p-4 w-full rounded-2xl bg-verdebianco  opacity-80 focus:opacity-100">
+			<textarea name="message" required placeholder="Messaggio" class="p-3 md:p-4 w-full rounded-2xl bg-verdebianco opacity-80 focus:opacity-100 "></textarea>
+			<input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+		
+			<button type="submit" class="p-3 md:p-4 w-36 rounded-2xl bg-verdebianco opacity-80 hover:opacity-100 transition-all" id="result">Submit</button>
+		
+
+		
+		</form>
+	</div>
+			
+
+</Layout>
+
+<style>
+    #logo {
+        animation: logoScale 1000ms ease-out 500ms;
+    }
+
+    @keyframes logoScale {
+        0% {
+            transform: scale(0.95);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+
+    .no-scroll {
+        overflow: hidden;
+    }
+</style>
+
+<script is:inline>
+    const form = document.getElementById('form');
+    const result = document.getElementById('result');
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+      result.innerHTML = "Please wait..."
+    
+        fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 100) {
+                    result.innerHTML = "Sent";
+                } else {
+                    console.log(response);
+                    result.innerHTML = json.message;
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                result.innerHTML = "Something went wrong!";
+            })
+            .then(function() {
+                form.reset();
+                setTimeout(() => {
+                    result.innerHTML = "Submit";
+                }, 1000);
+            });
+    });
+    </script>
+
+<script>
+    document.body.classList.add('no-scroll');
+
+    setTimeout(() => {
+        document.body.classList.remove('no-scroll');
+    }, 1500);
+</script>
